@@ -1,0 +1,455 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+   *********************************Student Account Header File****************************************
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#include <iostream>
+#include <string>
+#include <cstdlib>
+using namespace std;
+
+class StudentAccount {
+private:
+    string First_Name; //Student's First Name
+    string Last_Name; //Student's Last Name
+    string ID; //student's ID Number
+    string DOB; // Student's Date of birth
+    string FA; //Student's Faculty
+    string DEP; //Student's Department
+    double CGPA; //Student's cgpa
+public:
+    StudentAccount ();
+    ~StudentAccount ();
+
+    void Set_First_Name (string &x);
+    string Get_First_Name ();
+
+    void Set_Last_Name (string &x);
+    string Get_Last_Name ();
+
+    void Set_ID (string &x);
+    string Get_ID ();
+
+    void Set_DOB (string &x);
+    string Get_DOB ();
+
+    void Set_FA (string &x);
+    string Get_FA ();
+
+    void Set_DEP (string &x);
+    string Get_DEP ();
+
+    void Set_CGPA (double &r);
+    double Get_CGPA ();
+
+    void Display ();
+};
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+   *********************************Student Account Source File****************************************
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#include "StudentAccount.h"
+
+StudentAccount :: StudentAccount()
+{
+    CGPA = 0;
+}
+
+StudentAccount :: ~StudentAccount()
+{
+
+}
+
+void StudentAccount :: Set_First_Name (string &x)
+{
+    First_Name = x;
+}
+string StudentAccount :: Get_First_Name ()
+{
+    return First_Name;
+}
+
+
+void StudentAccount :: Set_Last_Name (string &x)
+{
+    Last_Name = x;
+}
+string StudentAccount :: Get_Last_Name ()
+{
+    return Last_Name;
+}
+
+
+void StudentAccount :: Set_ID (string &x)
+{
+    ID = x;
+}
+string StudentAccount :: Get_ID ()
+{
+    return ID;
+}
+
+
+void StudentAccount :: Set_DOB (string &x)
+{
+    DOB = x;
+}
+string StudentAccount :: Get_DOB ()
+{
+    return DOB;
+}
+
+
+void StudentAccount :: Set_FA (string &x)
+{
+    FA = x;
+}
+string StudentAccount :: Get_FA ()
+{
+    return FA;
+}
+
+
+void StudentAccount :: Set_DEP (string &x)
+{
+    DEP = x;
+}
+string StudentAccount :: Get_DEP ()
+{
+    return DEP;
+}
+
+
+void StudentAccount :: Set_CGPA (double &r)
+{
+    CGPA = r;
+}
+double StudentAccount :: Get_CGPA ()
+{
+    return CGPA;
+}
+
+
+void StudentAccount :: Display ()
+{
+    cout << "First Name    : " << Get_First_Name() << endl;
+    cout << "Last Name     : " << Get_Last_Name() << endl;
+    cout << "ID Number     : " << Get_ID() << endl;
+    cout << "Data of Birth : " << Get_DOB() << endl;
+    cout << "Faculty Name  : " << Get_FA() << endl;
+    cout << "Department    : " << Get_DEP() << endl;
+    cout << "CGPA          : " << Get_CGPA() << endl;
+}
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+   ************ ******************Student Database Header File****************************************
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+#include "StudentAccount.h"
+#define Size 1000
+
+class StudentDB
+{
+    private:
+    StudentAccount Database[Size];
+    int top;
+
+    public:
+    StudentDB ();
+    ~StudentDB ();
+
+    int Searching (string s);
+    void Add_Student ();
+    void Delete_Student ();
+    void Edit_Student_Profile ();
+    void Information_Of_A_Student ();
+    void Information_Of_All_Student ();
+    void Database_Operator ();
+    void List_Of_Student ();
+
+};
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+   *********************************Student Database Source File****************************************
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+#include "StudentDB.h"
+StudentDB ::StudentDB ()
+    {
+        top = 0;
+    }
+
+StudentDB ::~StudentDB ()
+    {
+
+    }
+
+
+int StudentDB :: Searching (string s) {
+    for (int i = 0; i < top; i++) {
+        if (Database[i].Get_ID() == s) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+
+void StudentDB :: Add_Student ()
+{
+    string FN, LN, ID, DOB, FA, DEP;
+    double CGPA;
+
+    cout << "Put Your First Name : ";
+    cin >> FN;
+    Database[top].Set_First_Name(FN);
+
+    cout << "Put Your Last Name : ";
+    cin >> LN;
+    Database[top].Set_Last_Name(LN);
+
+    cout << "Put Your ID number : ";
+    cin >> ID;
+    Database[top].Set_ID(ID);
+
+    cout << "Put Your Data of Birth : ";
+    cin >> DOB;
+    Database[top].Set_DOB(DOB);
+
+    cout << "Put Your Faculty Name : ";
+    cin >> FA;
+    Database[top].Set_FA(FA);
+
+    cout << "Put Your Department Name : ";
+    cin >> DEP;
+    Database[top].Set_DEP(DEP);
+
+    cout << "Put Your CGPA Mark : ";
+    cin >> CGPA;
+    Database[top].Set_CGPA(CGPA);
+
+    top++;
+
+}
+
+
+void StudentDB :: Delete_Student() {
+    string s;
+    cout << "Enter Your ID Number: ";
+    cin >> s;
+
+    int m = Searching(s);
+    if ( m > -1)
+    {
+        for(int i = m; i < top; i++)
+        {
+            Database[m] = Database[m+1];
+            top--;
+        }
+        cout << "\n****Deletting Successful****" << endl;
+    }
+    else
+    {
+        cout << "Invalid Student" << endl;
+    }
+}
+
+
+void StudentDB :: Edit_Student_Profile()
+{
+    string s;
+    cout << "Put Your ID Number: ";
+    cin >> s;
+
+    int m = Searching(s);
+    if ( m > -1)
+    {
+        string FN, LN, ID, DOB, FA, DEP;
+        double CGPA;
+
+        cout << "Put New Your First Name : ";
+        cin >> FN;
+        Database[top].Set_First_Name(FN);
+
+        cout << "Put New Your Last Name : ";
+        cin >> LN;
+        Database[top].Set_Last_Name(LN);
+
+        cout << "Put New Your ID number : ";
+        cin >> ID;
+        Database[top].Set_ID(ID);
+
+        cout << "Put New Your Data of Birth : ";
+        cin >> DOB;
+        Database[top].Set_DOB(DOB);
+
+        cout << "Put New Your Faculty Name : ";
+        cin >> FA;
+        Database[top].Set_FA(FA);
+
+        cout << "Put New Your Department Name : ";
+        cin >> DEP;
+        Database[top].Set_DEP(DEP);
+
+        cout << "Put New Your CGPA Mark : ";
+        cin >> CGPA;
+        Database[top].Set_CGPA(CGPA);
+    }
+    else
+    {
+        cout << "Invalid Student" << endl;
+    }
+}
+
+
+void StudentDB :: Information_Of_A_Student ()
+{
+    string s;
+    cout << "Put Your ID Number: ";
+    cin >> s;
+
+    int m = Searching(s);
+    if ( m > -1)
+    {
+        cout << "\n" << endl;
+        Database[m].Display();
+    }
+    else
+    {
+        cout << "Invalid Student" << endl;
+    }
+}
+
+
+void StudentDB :: Information_Of_All_Student ()
+{
+
+    cout << "Number of student is : " << top << "\n" << endl;
+    if(top != 0)
+    {
+
+        for(int i = 0; i < top; i++)
+        {
+            cout << "\nSerial number : " << i+1 << endl;
+            Database[i].Display();
+            cout << "\n\n" << endl;
+        }
+    }
+    else
+    {
+        cout << "List is now empty" << endl;
+    }
+
+}
+
+
+void StudentDB :: List_Of_Student()
+{
+    cout << "Number of student is : " << top << endl;
+    if(top != 0)
+    {
+        cout << "\nID Number :" << endl;
+        for(int i = 0; i < top; i++)
+            {
+                cout << "\n" << Database[i].Get_ID() << endl;
+            }
+    }
+    else
+    {
+        cout << "\nList is now empty" << endl;
+    }
+
+}
+
+
+void StudentDB :: Database_Operator ()
+ {
+     cout << " ******** Welcome to Student Database Account ******* " << endl;
+    char ch = '\0';
+    while (ch != 'n' && ch != 'N')
+    {
+        int s;
+        cout << "\n\t  Press 1: Add Student" << endl;
+        cout << "\t  Press 2: Delete Student" << endl;
+        cout << "\t  Press 3: Edit Student Profile" << endl;
+        cout << "\t  Press 4: Information of a Student" << endl;
+        cout << "\t  Press 5: Information of all Student" << endl;
+        cout << "\t  Press 6: List of Student" << endl;
+        cin >> s;
+        switch (s)
+        {
+            case 1:
+            system("cls");
+            Add_Student();
+            break;
+
+            case 2:
+            system("cls");
+            Delete_Student();
+            break;
+
+            case 3:
+            system("cls");
+            Edit_Student_Profile();
+            break;
+
+            case 4:
+            system("cls");
+            Information_Of_A_Student();
+            break;
+
+            case 5:
+            system("cls");
+            Information_Of_All_Student();
+            break;
+
+            case 6:
+            system("cls");
+            List_Of_Student();
+            break;
+
+            default:
+            cerr << "\tYou press worng key..\n    Press any key between 1 to 6.. " << endl;
+            break;
+
+        }
+        cout << "\n\tPress N to Quit \n    Or Press Any key for Menu" << endl;
+        cin >> ch;
+        system("cls");
+    }
+
+}
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ***********************************Main File*********************************************
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+#include "StudentDB.h"
+
+int main()
+{
+    StudentDB *roky = new StudentDB;
+    roky -> Database_Operator();
+    delete roky;
+
+    return 0;
+
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+   *********************************'.'.'.'.'.'.''.'.'.'.'.'.'.****************************************
+/////////////////////////////////////////////////////////////////////////////////////////////////////////

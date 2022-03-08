@@ -1,0 +1,52 @@
+# depslib dependency file v1.0
+1413318842 source:c:\users\s.mrejaulislam\desktop\code\studentaccount\studentdb.cpp
+	"StudentDB.h"
+
+1413313987 c:\users\s.mrejaulislam\desktop\code\studentaccount\studentdb.h
+	"StudentAccount.h"
+
+1413314348 c:\users\s.mrejaulislam\desktop\code\studentaccount\studentaccount.h
+	<iostream>
+	<string>
+	<cstdlib>
+
+1413315640 source:c:\users\s.mrejaulislam\desktop\code\studentaccount\main.cpp
+	"StudentDB.h"
+
+1413316980 source:c:\users\s.mrejaulislam\desktop\code\studentaccount\studentaccount.cpp
+	"StudentAccount.h"
+
+1413316980 source:c:\users\s.mrejaulislam\desktop\studentaccount\studentaccount.cpp
+	"StudentAccount.h"
+
+1413320209 c:\users\s.mrejaulislam\desktop\studentaccount\studentaccount.h
+	<iostream>
+	<string>
+	<cstdlib>
+
+1413319314 source:c:\users\s.mrejaulislam\desktop\studentaccount\main.cpp
+	"StudentDB.h"
+
+1413322065 c:\users\s.mrejaulislam\desktop\studentaccount\studentdb.h
+	"StudentAccount.h"
+
+1413323825 source:c:\users\s.mrejaulislam\desktop\studentaccount\studentdb.cpp
+	"StudentDB.h"
+
+1413268914 source:f:\_aiub_\2nd semester (fall)\class\programming language 2\pl\studentaccount\studentaccount\main.cpp
+	"StudentDB.h"
+
+1413271665 f:\_aiub_\2nd semester (fall)\class\programming language 2\pl\studentaccount\studentaccount\studentdb.h
+	"StudentAccount.h"
+
+1413269809 f:\_aiub_\2nd semester (fall)\class\programming language 2\pl\studentaccount\studentaccount\studentaccount.h
+	<iostream>
+	<string>
+	<cstdlib>
+
+1413266580 source:f:\_aiub_\2nd semester (fall)\class\programming language 2\pl\studentaccount\studentaccount\studentaccount.cpp
+	"StudentAccount.h"
+
+1413273842 source:f:\_aiub_\2nd semester (fall)\class\programming language 2\pl\studentaccount\studentaccount\studentdb.cpp
+	"StudentDB.h"
+
